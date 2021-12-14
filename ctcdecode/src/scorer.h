@@ -15,7 +15,7 @@
 
 const double OOV_SCORE = -1000.0;
 const std::string START_TOKEN = "<s>";
-const std::string UNK_TOKEN = "<unk>";
+const std::string UNK_TOKEN = "[UNK]";
 const std::string END_TOKEN = "</s>";
 
 // Implement a callback to retrive the dictionary of language model.
@@ -43,7 +43,8 @@ public:
   Scorer(double alpha,
          double beta,
          const std::string &lm_path,
-         const std::vector<std::string> &vocabulary);
+         const std::vector<std::string> &vocabulary,
+         bool is_bpe_based);
   ~Scorer();
 
   double get_log_cond_prob(const std::vector<std::string> &words);
@@ -101,7 +102,7 @@ private:
   bool is_character_based_;
   size_t max_order_;
   size_t dict_size_;
-
+  bool is_bpe_based_;
   int SPACE_ID_;
   std::vector<std::string> char_list_;
   std::unordered_map<std::string, int> char_map_;

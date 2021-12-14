@@ -144,8 +144,9 @@ void* paddle_get_scorer(double alpha,
                         double beta,
                         const char* lm_path,
                         vector<std::string> new_vocab,
-                        int vocab_size) {
-    Scorer* scorer = new Scorer(alpha, beta, lm_path, new_vocab);
+                        int vocab_size,
+                        bool is_bpe_based) {
+    Scorer* scorer = new Scorer(alpha, beta, lm_path, new_vocab, is_bpe_based);
     return static_cast<void*>(scorer);
 }
 

@@ -35,6 +35,7 @@ class CTCBeamDecoder(object):
         num_processes=4,
         blank_id=0,
         log_probs_input=False,
+        is_bpe_based=False,
     ):
         self.cutoff_top_n = cutoff_top_n
         self._beam_width = beam_width
@@ -46,7 +47,7 @@ class CTCBeamDecoder(object):
         self._log_probs = 1 if log_probs_input else 0
         if model_path:
             self._scorer = ctc_decode.paddle_get_scorer(
-                alpha, beta, model_path.encode(), self._labels, self._num_labels
+                alpha, beta, model_path.encode(), self._labels, self._num_labels, is_bpe_based
             )
         self._cutoff_prob = cutoff_prob
 
@@ -171,6 +172,7 @@ class OnlineCTCBeamDecoder(object):
         num_processes=4,
         blank_id=0,
         log_probs_input=False,
+        is_bpe_based=False,
     ):
         self._cutoff_top_n = cutoff_top_n
         self._beam_width = beam_width
@@ -182,7 +184,7 @@ class OnlineCTCBeamDecoder(object):
         self._log_probs = 1 if log_probs_input else 0
         if model_path:
             self._scorer = ctc_decode.paddle_get_scorer(
-                alpha, beta, model_path.encode(), self._labels, self._num_labels
+                alpha, beta, model_path.encode(), self._labels, self._num_labels, is_bpe_based
             )
         self._cutoff_prob = cutoff_prob
 
