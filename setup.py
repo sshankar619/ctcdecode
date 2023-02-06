@@ -24,8 +24,8 @@ def download_extract(url, dl_path):
 
 # Download/Extract openfst, boost
 download_extract(
-    "https://github.com/parlance/ctcdecode/releases/download/v1.0/openfst-1.6.7.tar.gz",
-    "third_party/openfst-1.6.7.tar.gz",
+    "https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-1.8.2.tar.gz",
+    "third_party/openfst-1.8.2.tar.gz",
 )
 download_extract(
     "https://github.com/parlance/ctcdecode/releases/download/v1.0/boost_1_67_0.tar.gz",
