@@ -68,13 +68,13 @@ if compile_test("lzma.h", "lzma"):
     compile_args.append("-DHAVE_XZLIB")
     ext_libs.append("lzma")
 
-third_party_libs = ["kenlm", "openfst-1.6.7/src/include", "ThreadPool", "boost_1_67_0", "utf8"]
+third_party_libs = ["kenlm", "openfst-1.8.2/src/include", "ThreadPool", "boost_1_67_0", "utf8"]
 compile_args.extend(["-DINCLUDE_KENLM", "-DKENLM_MAX_ORDER=6"])
 lib_sources = (
     glob.glob("third_party/kenlm/util/*.cc")
     + glob.glob("third_party/kenlm/lm/*.cc")
     + glob.glob("third_party/kenlm/util/double-conversion/*.cc")
-    + glob.glob("third_party/openfst-1.6.7/src/lib/*.cc")
+    + glob.glob("third_party/openfst-1.8.2/src/lib/*.cc")
 )
 lib_sources = [fn for fn in lib_sources if not (fn.endswith("main.cc") or fn.endswith("test.cc"))]
 
